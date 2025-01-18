@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 112833405}
   - component: {fileID: 112833406}
   - component: {fileID: 112833407}
+  - component: {fileID: 112833408}
   m_Layer: 0
   m_Name: PowerUpManager
   m_TagString: Untagged
@@ -184,6 +185,22 @@ MonoBehaviour:
   bouncyMaterial: {fileID: 6200000, guid: 2d2e4fd399b9faf418207fb61a68c9c0, type: 2}
   force: 20
   maxTimer: 2
+--- !u!114 &112833408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112833404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed80c0e3fe4061b418c9e3e230549ee5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTimer: 5
+  speedsterSpeed: 10
+  shrinkScript: {fileID: 112833406}
+  bouncyBallScript: {fileID: 112833407}
 --- !u!1 &148229019
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,6 +760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   movementMode: 1
+  defaultspeed: 5
   speed: 5
   flipVector: 1
   whatIsGround:

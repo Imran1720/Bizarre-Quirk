@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [Header("Player Movement info")]
     private float xInput;
     public MovementMode movementMode;
+    public float defaultspeed;
     public float speed;
     public float flipVector;
 
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         jumpCount = maxJumpCount;
+        speed = defaultspeed;
     }
 
     // Update is called once per frame
@@ -102,5 +104,26 @@ public class PlayerController : MonoBehaviour
             canDoubleJump = true;
             jumpCount = maxJumpCount;
         }
+    }
+
+    public void ActivateSpeedBoost(float boost)
+    {
+        speed = boost;
+    }
+
+    public void ResetSpeed()
+    {
+        speed = defaultspeed;
+    }
+
+    public void ReverseControls()
+    {
+        movementMode = MovementMode.inverted;
+    }
+
+    public void ResetControls()
+    {
+        movementMode = MovementMode.normal;
+
     }
 }
