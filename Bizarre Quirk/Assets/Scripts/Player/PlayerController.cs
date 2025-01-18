@@ -7,7 +7,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Player Movement info")]
     private float xInput;
+    public MovementMode movementMode;
     public float speed;
+    public float flipVector;
 
     [Header("Ground info")]
     public LayerMask whatIsGround;
@@ -47,11 +49,11 @@ public class PlayerController : MonoBehaviour
         Vector3 localScale = transform.localScale;
         if (xInput > 0)
         {
-            localScale.x = 1;
+            localScale.x = Mathf.Abs(flipVector);
         }
         else if (xInput < 0)
         {
-            localScale.x = -1;
+            localScale.x = -1 * Mathf.Abs(flipVector);
         }
         transform.localScale = localScale;
     }
@@ -68,7 +70,7 @@ public class PlayerController : MonoBehaviour
     }
     private void PlayerInput()
     {
-        xInput = Input.GetAxisRaw("Horizontal");
+        xInput = Input.GetAxisRaw("Horizontal") * (int)movementMode;
     }
 
     private void Jump()

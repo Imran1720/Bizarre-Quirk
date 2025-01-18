@@ -386,6 +386,7 @@ GameObject:
   - component: {fileID: 736322259}
   - component: {fileID: 736322258}
   - component: {fileID: 736322262}
+  - component: {fileID: 736322263}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -546,14 +547,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  movementMode: 1
   speed: 5
-  jumpForce: 200
+  flipVector: 1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
   groundCheckPosition: {fileID: 770574373}
   groundCheckDistance: 0.1
-  maxJumpCount: 0
+  jumpForce: 200
+  maxJumpCount: 2
+--- !u!114 &736322263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736322257}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9face5a50ff464f44ae9e724845519e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shrinkScale: {x: 0.4, y: 0.4}
+  flipVector_Shrinked: 0.4
 --- !u!1 &770574372
 GameObject:
   m_ObjectHideFlags: 0
