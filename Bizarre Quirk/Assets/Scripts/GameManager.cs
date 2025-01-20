@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [Header("Essentials")]
+    public int maxkeys;
     public int keys;
 
     [Header("Essentials")]
@@ -27,9 +28,10 @@ public class GameManager : MonoBehaviour
         UIManager.instance.UpdateTimer((int)timer);
     }
 
-    public void IscreaseKeyCount()
+    public void IncreaseKeyCount()
     {
         keys++;
+        UIManager.instance.RefreshKeys(keys, maxkeys);
     }
 
 

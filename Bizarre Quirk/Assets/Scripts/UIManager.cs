@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     public GameObject pannel_HUD, pannel_PowerUp;
 
     public GameObject[] hearts;
+    public GameObject[] keySlot;
+    public Sprite keySprite;
     private void Awake()
     {
         instance = this;
@@ -57,6 +59,18 @@ public class UIManager : MonoBehaviour
             if (i > health - 1)
             {
                 hearts[i].SetActive(false);
+
+            }
+        }
+    }
+
+    public void RefreshKeys(int keys, int maxKeys)
+    {
+        for (int i = 0; i < maxKeys; i++)
+        {
+            if (i <= keys - 1)
+            {
+                keySlot[i].GetComponent<Image>().sprite = keySprite;
 
             }
         }
