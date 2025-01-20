@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     public Image powerBar;
     public GameObject pannel_HUD, pannel_PowerUp;
 
+    public GameObject[] hearts;
     private void Awake()
     {
         instance = this;
@@ -47,6 +48,18 @@ public class UIManager : MonoBehaviour
         powerUpTitle.text = name.ToString();
         pannel_HUD.SetActive(false);
         pannel_PowerUp.SetActive(true);
+    }
+
+    public void RefreshHealth(int health)
+    {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i > health - 1)
+            {
+                hearts[i].SetActive(false);
+
+            }
+        }
     }
 }
 

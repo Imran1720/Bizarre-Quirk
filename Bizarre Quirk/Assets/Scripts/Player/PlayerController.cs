@@ -133,6 +133,7 @@ public class PlayerController : MonoBehaviour
     public void DecreasePlayerHealth()
     {
         health--;
+        UIManager.instance.RefreshHealth(health);
         if (health <= 0)
         {
             health = 0;

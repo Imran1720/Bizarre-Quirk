@@ -78,6 +78,7 @@ public class PowerUpManager : MonoBehaviour
             Debug.Log("Player movement activated");
             playerController.enabled = true;
         }
+        PlayerController.instance.jumpCount = PlayerController.instance.maxJumpCount;
         PlayerController.instance.ResetSpeed();
         PlayerController.instance.ResetControls();
         bouncyBallScript.enabled = false;

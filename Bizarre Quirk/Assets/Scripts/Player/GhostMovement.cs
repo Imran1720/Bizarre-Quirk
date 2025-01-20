@@ -9,7 +9,9 @@ public class GhostMovement : MonoBehaviour
     float xInput;
     float yInput;
     public float speed;
+    public GameObject timerUI;
 
+    public GameObject tail;
 
     private void OnEnable()
     {
@@ -17,6 +19,9 @@ public class GhostMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         platform.GetComponent<TilemapCollider2D>().isTrigger = true;
+        tail.SetActive(true);
+        tail.GetComponent<TrailRenderer>().startColor = Color.cyan;
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
 
 
     }
@@ -26,6 +31,22 @@ public class GhostMovement : MonoBehaviour
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
         PlayerMovement();
+        Flip();
+    }
+
+    private void Flip()
+    {
+        Vector3 localScale = transform.localScale;
+        if (xInput > 0)
+        {
+            localScale.x = 1;
+        }
+        if (xInput < 0)
+        {
+            localScale.x = -1;
+        }
+        transform.localScale = localScale;
+        timerUI.transform.localScale = localScale;
     }
 
     public void PlayerMovement()
@@ -37,5 +58,9 @@ public class GhostMovement : MonoBehaviour
     {
         rb.gravityScale = 1;
         platform.GetComponent<TilemapCollider2D>().isTrigger = false;
+        tail.SetActive(false);
+        tail.GetComponent<TrailRenderer>().startColor = Color.yellow;
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+
     }
 }
