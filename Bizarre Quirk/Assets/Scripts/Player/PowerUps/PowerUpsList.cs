@@ -1,9 +1,9 @@
 public enum PowerUpList
 {
-    Shirnk,
-    SpeedSter,
-    ExplosiveEnemies,
-    ReverseControl,
-    BouncyBall,
+    Antman,
+    Flash,
+    Ghost,
+    Contrary_Will,
+    Jumpstream,
     normal
 }

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public int levelDuration;
     float timer;
 
-
+    public Transform checkPoint;
     private void Awake()
     {
         instance = this;

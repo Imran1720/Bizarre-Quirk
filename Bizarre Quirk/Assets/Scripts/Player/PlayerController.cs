@@ -22,10 +22,11 @@ public class PlayerController : MonoBehaviour
 
     [Header("Jump info")]
     public float jumpForce;
-    int jumpCount;
+    public int jumpCount;
     public int maxJumpCount;
 
     public GameObject timerUI;
+    public GameObject check;
     private void Awake()
     {
         instance = this;
@@ -136,5 +137,12 @@ public class PlayerController : MonoBehaviour
         {
             health = 0;
         }
+    }
+
+    public void Respawn()
+    {
+        Transform target = GameManager.instance.checkPoint;
+
+        transform.position = new Vector3(target.transform.position.x, target.transform.position.y, 0);
     }
 }

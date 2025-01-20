@@ -11,11 +11,12 @@ public class PowerUpManager : MonoBehaviour
     public GameObject boostFX;
 
 
-
     int randomPowerUp;
 
+    public PlayerController playerController;
     public Shrink shrinkScript;
     public BouncyBall bouncyBallScript;
+    public GhostMovement ghostMovement;
 
     private void Start()
     {
@@ -46,20 +47,21 @@ public class PowerUpManager : MonoBehaviour
         UIManager.instance.UpdatePowerName(GetPowerName((PowerUpList)randomPowerUp));
         switch ((PowerUpList)randomPowerUp)
         {
-            case PowerUpList.Shirnk:
+            case PowerUpList.Antman:
                 shrinkScript.enabled = true;
                 break;
-            case PowerUpList.SpeedSter:
+            case PowerUpList.Flash:
                 PlayerController.instance.ActivateSpeedBoost(speedsterSpeed);
                 boostFX.SetActive(true);
                 break;
-            case PowerUpList.ExplosiveEnemies:
-                Debug.Log("Enemies are Exploding");
+            case PowerUpList.Ghost:
+                ghostMovement.enabled = true;
+                playerController.enabled = false;
                 break;
-            case PowerUpList.ReverseControl:
+            case PowerUpList.Contrary_Will:
                 PlayerController.instance.ReverseControls();
                 break;
-            case PowerUpList.BouncyBall:
+            case PowerUpList.Jumpstream:
                 boostFX.SetActive(true);
                 bouncyBallScript.enabled = true;
                 break;
@@ -71,10 +73,16 @@ public class PowerUpManager : MonoBehaviour
 
     public void ResetPowerUps()
     {
-        shrinkScript.enabled = false;
+        if (playerController.enabled == false)
+        {
+            Debug.Log("Player movement activated");
+            playerController.enabled = true;
+        }
         PlayerController.instance.ResetSpeed();
         PlayerController.instance.ResetControls();
         bouncyBallScript.enabled = false;
+        shrinkScript.enabled = false;
+        ghostMovement.enabled = false;
         boostFX.SetActive(false);
     }
 
@@ -87,16 +95,16 @@ public class PowerUpManager : MonoBehaviour
     {
         switch (power)
         {
-            case PowerUpList.ExplosiveEnemies:
-                return "exploding enemies";
+            case PowerUpList.Ghost:
+                return "You are a Ghost";
 
-            case PowerUpList.Shirnk:
+            case PowerUpList.Antman:
                 return "Antman";
-            case PowerUpList.SpeedSter:
+            case PowerUpList.Flash:
                 return "Flash";
-            case PowerUpList.ReverseControl:
+            case PowerUpList.Contrary_Will:
                 return "Contrary Will";
-            case PowerUpList.BouncyBall:
+            case PowerUpList.Jumpstream:
                 return "Jumpstream";
             case PowerUpList.normal:
                 return "normal";
