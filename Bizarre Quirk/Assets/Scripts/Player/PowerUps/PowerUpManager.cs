@@ -8,6 +8,7 @@ public class PowerUpManager : MonoBehaviour
     float timer;
     [Header("Speed Info")]
     public float speedsterSpeed;
+    public GameObject boostFX;
 
 
 
@@ -20,6 +21,7 @@ public class PowerUpManager : MonoBehaviour
     {
         timer = maxTimer;
         UIManager.instance.UpdatePowerName(GetPowerName(PowerUpList.normal));
+        ResetPowerUps();
         randomPowerUp = GetRandomPowerUp();
 
     }
@@ -49,6 +51,7 @@ public class PowerUpManager : MonoBehaviour
                 break;
             case PowerUpList.SpeedSter:
                 PlayerController.instance.ActivateSpeedBoost(speedsterSpeed);
+                boostFX.SetActive(true);
                 break;
             case PowerUpList.ExplosiveEnemies:
                 Debug.Log("Enemies are Exploding");
@@ -57,6 +60,7 @@ public class PowerUpManager : MonoBehaviour
                 PlayerController.instance.ReverseControls();
                 break;
             case PowerUpList.BouncyBall:
+                boostFX.SetActive(true);
                 bouncyBallScript.enabled = true;
                 break;
             case PowerUpList.normal:
@@ -71,6 +75,7 @@ public class PowerUpManager : MonoBehaviour
         PlayerController.instance.ResetSpeed();
         PlayerController.instance.ResetControls();
         bouncyBallScript.enabled = false;
+        boostFX.SetActive(false);
     }
 
     public int GetRandomPowerUp()
