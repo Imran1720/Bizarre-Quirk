@@ -18,6 +18,8 @@ public class PowerUpManager : MonoBehaviour
 
     private void Start()
     {
+        timer = maxTimer;
+        UIManager.instance.UpdatePowerName(GetPowerName(PowerUpList.normal));
         randomPowerUp = GetRandomPowerUp();
 
     }
@@ -25,6 +27,7 @@ public class PowerUpManager : MonoBehaviour
     private void Update()
     {
         timer -= Time.deltaTime;
+        UIManager.instance.RefreshPowerBar(timer / 5);
         if (timer <= 0)
         {
             ChangePowerUp();
@@ -39,22 +42,25 @@ public class PowerUpManager : MonoBehaviour
         ResetPowerUps();
         randomPowerUp = GetRandomPowerUp();
         UIManager.instance.UpdatePowerName(GetPowerName((PowerUpList)randomPowerUp));
-        switch (randomPowerUp)
+        switch ((PowerUpList)randomPowerUp)
         {
-            case 0:
+            case PowerUpList.Shirnk:
                 shrinkScript.enabled = true;
                 break;
-            case 1:
+            case PowerUpList.SpeedSter:
                 PlayerController.instance.ActivateSpeedBoost(speedsterSpeed);
                 break;
-            case 2:
+            case PowerUpList.ExplosiveEnemies:
                 Debug.Log("Enemies are Exploding");
                 break;
-            case 3:
+            case PowerUpList.ReverseControl:
                 PlayerController.instance.ReverseControls();
                 break;
-            case 4:
+            case PowerUpList.BouncyBall:
                 bouncyBallScript.enabled = true;
+                break;
+            case PowerUpList.normal:
+                ResetPowerUps();
                 break;
         }
     }
@@ -87,7 +93,9 @@ public class PowerUpManager : MonoBehaviour
                 return "Contrary Will";
             case PowerUpList.BouncyBall:
                 return "Jumpstream";
+            case PowerUpList.normal:
+                return "normal";
         }
-        return null;
+        return "normal";
     }
 }

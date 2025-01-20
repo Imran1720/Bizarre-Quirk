@@ -4,5 +4,6 @@ public enum PowerUpList
     SpeedSter,
     ExplosiveEnemies,
     ReverseControl,
-    BouncyBall
+    BouncyBall,
+    normal
 }

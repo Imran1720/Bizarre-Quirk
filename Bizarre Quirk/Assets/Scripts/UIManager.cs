@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI timer;
 
     public TextMeshProUGUI powerName;
+
+    public Image powerBar;
 
     private void Awake()
     {
@@ -21,5 +24,11 @@ public class UIManager : MonoBehaviour
     public void UpdatePowerName(string name)
     {
         powerName.text = name.ToUpper();
+    }
+
+    public void RefreshPowerBar(float value)
+    {
+        powerBar.fillAmount = value;
+
     }
 }

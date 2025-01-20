@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     int jumpCount;
     public int maxJumpCount;
 
+    public GameObject timerUI;
     private void Awake()
     {
         instance = this;
@@ -59,6 +60,8 @@ public class PlayerController : MonoBehaviour
             localScale.x = -1 * Mathf.Abs(flipVector);
         }
         transform.localScale = localScale;
+        timerUI.transform.localScale = localScale;
+
     }
 
     private void PlayerMovement()
