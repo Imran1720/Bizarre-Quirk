@@ -38,6 +38,7 @@ public class PowerUpManager : MonoBehaviour
     {
         ResetPowerUps();
         randomPowerUp = GetRandomPowerUp();
+        UIManager.instance.UpdatePowerName(GetPowerName((PowerUpList)randomPowerUp));
         switch (randomPowerUp)
         {
             case 0:
@@ -69,5 +70,24 @@ public class PowerUpManager : MonoBehaviour
     public int GetRandomPowerUp()
     {
         return UnityEngine.Random.Range(0, Enum.GetNames(typeof(PowerUpList)).Length);
+    }
+
+    public string GetPowerName(PowerUpList power)
+    {
+        switch (power)
+        {
+            case PowerUpList.ExplosiveEnemies:
+                return "exploding enemies";
+
+            case PowerUpList.Shirnk:
+                return "Antman";
+            case PowerUpList.SpeedSter:
+                return "Flash";
+            case PowerUpList.ReverseControl:
+                return "Contrary Will";
+            case PowerUpList.BouncyBall:
+                return "Jumpstream";
+        }
+        return null;
     }
 }

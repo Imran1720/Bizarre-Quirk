@@ -5,6 +5,9 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance;
     public Rigidbody2D rb;
 
+    [Header("Player Details")]
+    public int health;
+
     [Header("Player Movement info")]
     private float xInput;
     public MovementMode movementMode;
@@ -16,11 +19,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
     public Transform groundCheckPosition;
     public float groundCheckDistance;
-    bool isGrounded;
 
     [Header("Jump info")]
     public float jumpForce;
-    bool canDoubleJump = true;
     int jumpCount;
     public int maxJumpCount;
 
@@ -100,8 +101,6 @@ public class PlayerController : MonoBehaviour
 
         if ((collision.gameObject.CompareTag("Ground")) && GroundCheck())
         {
-            isGrounded = true;
-            canDoubleJump = true;
             jumpCount = maxJumpCount;
         }
     }
@@ -125,5 +124,14 @@ public class PlayerController : MonoBehaviour
     {
         movementMode = MovementMode.normal;
 
+    }
+
+    public void DecreasePlayerHealth()
+    {
+        health--;
+        if (health <= 0)
+        {
+            health = 0;
+        }
     }
 }
