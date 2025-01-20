@@ -9,8 +9,10 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI timer;
 
     public TextMeshProUGUI powerName;
+    public TextMeshProUGUI powerUpTitle;
 
     public Image powerBar;
+    public GameObject pannel_HUD, pannel_PowerUp;
 
     private void Awake()
     {
@@ -31,4 +33,20 @@ public class UIManager : MonoBehaviour
         powerBar.fillAmount = value;
 
     }
+
+    public void ShowHUD()
+    {
+        Time.timeScale = 1f;
+        pannel_HUD.SetActive(true);
+        pannel_PowerUp.SetActive(false);
+    }
+
+    public void ShowPowerUp(PowerUpList name)
+    {
+        Time.timeScale = 0f;
+        powerUpTitle.text = name.ToString();
+        pannel_HUD.SetActive(false);
+        pannel_PowerUp.SetActive(true);
+    }
 }
+

@@ -30,12 +30,11 @@ public class PowerUpManager : MonoBehaviour
     private void Update()
     {
         timer -= Time.deltaTime;
-        UIManager.instance.RefreshPowerBar(timer / 5);
+        UIManager.instance.RefreshPowerBar(timer / maxTimer);
         if (timer <= 0)
         {
             ChangePowerUp();
-            Debug.ClearDeveloperConsole();
-            Debug.Log((PowerUpList)randomPowerUp);
+
             timer = maxTimer;
         }
     }
@@ -44,6 +43,7 @@ public class PowerUpManager : MonoBehaviour
     {
         ResetPowerUps();
         randomPowerUp = GetRandomPowerUp();
+        UIManager.instance.ShowPowerUp((PowerUpList)randomPowerUp);
         UIManager.instance.UpdatePowerName(GetPowerName((PowerUpList)randomPowerUp));
         switch ((PowerUpList)randomPowerUp)
         {
@@ -96,19 +96,20 @@ public class PowerUpManager : MonoBehaviour
         switch (power)
         {
             case PowerUpList.Ghost:
-                return "You are a Ghost";
+                return "You are a Ghost!!";
 
             case PowerUpList.Antman:
-                return "Antman";
+                return "You are an ant!!";
             case PowerUpList.Flash:
-                return "Flash";
+                return "You became Flash!!";
             case PowerUpList.Contrary_Will:
-                return "Contrary Will";
+                return "You are Drunk!!";
             case PowerUpList.Jumpstream:
-                return "Jumpstream";
+                return "You can't stop Jumping!!";
             case PowerUpList.normal:
-                return "normal";
+                return "you are now normal!!";
         }
         return "normal";
     }
+
 }
