@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,6 +35,25 @@ public class GameManager : MonoBehaviour
         UIManager.instance.RefreshKeys(keys, maxkeys);
     }
 
+    public void OpenDoor()
+    {
+        if (keys == maxkeys)
+        {
+            int levelIndex = SceneManager.GetActiveScene().buildIndex;
+            if (levelIndex + 1 < SceneManager.sceneCountInBuildSettings)
+            {
+                levelIndex += 1;
+                PlayerPrefs.SetInt($"Level{levelIndex}Status", (int)LevelStatus.unlocked);
+            }
+            UIManager.instance.LevelComplete();
 
+        }
+
+    }
+
+    public void GameOver()
+    {
+        UIManager.instance.GameOver();
+    }
 
 }

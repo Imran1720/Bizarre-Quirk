@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         rb = GetComponent<Rigidbody2D>();
         jumpCount = maxJumpCount;
         speed = defaultspeed;
@@ -137,6 +138,7 @@ public class PlayerController : MonoBehaviour
         if (health <= 0)
         {
             health = 0;
+            GameManager.instance.GameOver();
         }
     }
 

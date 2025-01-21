@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraTrigger : MonoBehaviour
+public class Checkpoint : MonoBehaviour
 {
     public int targetIndex;
 
@@ -10,7 +10,7 @@ public class CameraTrigger : MonoBehaviour
         if (collision.GetComponent<PlayerController>() != null)
         {
             GameManager.instance.checkPoint = this.transform;
-            CamerMovement.instance.MoveTo(targetIndex);
+            CamerController.instance.MoveTo(targetIndex);
         }
     }
 }

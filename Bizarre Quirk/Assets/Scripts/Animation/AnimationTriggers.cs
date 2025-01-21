@@ -5,6 +5,6 @@ public class AnimationTriggers : MonoBehaviour
 
     public void ResumeGame()
     {
-        UIManager.instance.ShowHUD();
+        UIManager.instance.Resume();
     }
 }

@@ -75,7 +75,6 @@ public class PowerUpManager : MonoBehaviour
     {
         if (playerController.enabled == false)
         {
-            Debug.Log("Player movement activated");
             playerController.enabled = true;
         }
         PlayerController.instance.jumpCount = PlayerController.instance.maxJumpCount;

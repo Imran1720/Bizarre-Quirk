@@ -57,7 +57,10 @@ public class GhostMovement : MonoBehaviour
     private void OnDisable()
     {
         rb.gravityScale = 1;
-        platform.GetComponent<TilemapCollider2D>().isTrigger = false;
+        if (platform != null)
+        {
+            platform.GetComponent<TilemapCollider2D>().isTrigger = false;
+        }
         tail.SetActive(false);
         tail.GetComponent<TrailRenderer>().startColor = Color.yellow;
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);

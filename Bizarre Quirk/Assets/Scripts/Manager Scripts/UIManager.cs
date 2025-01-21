@@ -5,15 +5,23 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
+    [Header("PANEL / SCREEN ")]
+    public GameObject pannel_HUD;
+    public GameObject pannel_PowerUp;
+    public GameObject pannel_Pause;
+    public GameObject pannel_GameOver;
+    public GameObject pannel_GameComplete;
 
+
+
+    [Header("UI-TEXTS")]
     public TextMeshProUGUI timer;
-
     public TextMeshProUGUI powerName;
     public TextMeshProUGUI powerUpTitle;
 
-    public Image powerBar;
-    public GameObject pannel_HUD, pannel_PowerUp;
 
+    [Header("UI-IMAGES")]
+    public Image powerBar;
     public GameObject[] hearts;
     public GameObject[] keySlot;
     public Sprite keySprite;
@@ -21,6 +29,8 @@ public class UIManager : MonoBehaviour
     {
         instance = this;
     }
+
+    //UI
     public void UpdateTimer(int time)
     {
         timer.text = time.ToString();
@@ -36,22 +46,6 @@ public class UIManager : MonoBehaviour
         powerBar.fillAmount = value;
 
     }
-
-    public void ShowHUD()
-    {
-        Time.timeScale = 1f;
-        pannel_HUD.SetActive(true);
-        pannel_PowerUp.SetActive(false);
-    }
-
-    public void ShowPowerUp(PowerUpList name)
-    {
-        Time.timeScale = 0f;
-        powerUpTitle.text = name.ToString();
-        pannel_HUD.SetActive(false);
-        pannel_PowerUp.SetActive(true);
-    }
-
     public void RefreshHealth(int health)
     {
         for (int i = 0; i < hearts.Length; i++)
@@ -75,5 +69,43 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+
+    //PANELS
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+        pannel_HUD.SetActive(true);
+        pannel_Pause.SetActive(false);
+        pannel_PowerUp.SetActive(false);
+    }
+
+    public void ShowPowerUp(PowerUpList name)
+    {
+        Time.timeScale = 0f;
+        powerUpTitle.text = name.ToString();
+        pannel_HUD.SetActive(false);
+        pannel_PowerUp.SetActive(true);
+    }
+
+
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+        pannel_Pause.SetActive(true);
+
+    }
+    public void GameOver()
+    {
+        Time.timeScale = 0f;
+        pannel_GameOver.SetActive(true);
+
+    }
+
+    public void LevelComplete()
+    {
+        Time.timeScale = 0f;
+        pannel_GameComplete.SetActive(true);
+    }
+
 }
 

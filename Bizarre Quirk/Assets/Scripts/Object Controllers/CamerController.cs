@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class CamerMovement : MonoBehaviour
+public class CamerController : MonoBehaviour
 {
-    public static CamerMovement instance;
+    public static CamerController instance;
     public Transform[] positions;
     private void Awake()
     {
