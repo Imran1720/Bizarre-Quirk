@@ -29,6 +29,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadLevel(int level)
     {
+        SoundManager.instance.PlaySFX(Sounds.ButtonClick);
         if (level < SceneManager.sceneCountInBuildSettings)
         {
             SceneManager.LoadScene(level);

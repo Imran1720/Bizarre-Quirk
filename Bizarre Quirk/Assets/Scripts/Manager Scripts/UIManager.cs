@@ -82,6 +82,7 @@ public class UIManager : MonoBehaviour
     public void ShowPowerUp(PowerUpList name)
     {
         Time.timeScale = 0f;
+        SoundManager.instance.PlaySFX(Sounds.PowerUp);
         powerUpTitle.text = name.ToString();
         pannel_HUD.SetActive(false);
         pannel_PowerUp.SetActive(true);
@@ -90,12 +91,14 @@ public class UIManager : MonoBehaviour
 
     public void Pause()
     {
+        SoundManager.instance.PlaySFX(Sounds.PowerUp);
         Time.timeScale = 0f;
         pannel_Pause.SetActive(true);
 
     }
     public void GameOver()
     {
+        SoundManager.instance.PlaySFX(Sounds.Lose);
         Time.timeScale = 0f;
         pannel_GameOver.SetActive(true);
 

@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour
     {
         timer -= Time.deltaTime;
         UIManager.instance.UpdateTimer((int)timer);
+        if (timer <= 0)
+        {
+            UIManager.instance.GameOver();
+        }
     }
 
     public void IncreaseKeyCount()
@@ -39,6 +43,7 @@ public class GameManager : MonoBehaviour
     {
         if (keys == maxkeys)
         {
+            SoundManager.instance.PlaySFX(Sounds.GameComplete);
             int levelIndex = SceneManager.GetActiveScene().buildIndex;
             if (levelIndex + 1 < SceneManager.sceneCountInBuildSettings)
             {

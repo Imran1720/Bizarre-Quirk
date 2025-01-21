@@ -4,6 +4,7 @@ using UnityEngine.Tilemaps;
 public class GhostMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public Animator playerAnimator;
     public GameObject platform;
 
     float xInput;
@@ -17,6 +18,7 @@ public class GhostMovement : MonoBehaviour
     {
 
         rb = GetComponent<Rigidbody2D>();
+        playerAnimator.SetBool("Grounded", false);
         rb.gravityScale = 0;
         platform.GetComponent<TilemapCollider2D>().isTrigger = true;
         tail.SetActive(true);
@@ -56,6 +58,7 @@ public class GhostMovement : MonoBehaviour
 
     private void OnDisable()
     {
+        playerAnimator.SetBool("Grounded", false);
         rb.gravityScale = 1;
         if (platform != null)
         {

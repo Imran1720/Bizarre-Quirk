@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PowerUpManager : MonoBehaviour
 {
+    public static PowerUpManager instance;
     [Header("Timer Info")]
     public float maxTimer;
     float timer;
@@ -18,6 +19,11 @@ public class PowerUpManager : MonoBehaviour
     public BouncyBall bouncyBallScript;
     public GhostMovement ghostMovement;
 
+
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         timer = maxTimer;
@@ -110,6 +116,10 @@ public class PowerUpManager : MonoBehaviour
                 return "you are now normal!!";
         }
         return "normal";
+    }
+    public PowerUpList GetActivePower()
+    {
+        return (PowerUpList)randomPowerUp;
     }
 
 }

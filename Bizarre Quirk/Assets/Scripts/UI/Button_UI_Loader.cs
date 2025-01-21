@@ -15,6 +15,7 @@ public class Button_UI_Loader : MonoBehaviour
 
     void OpenPanel()
     {
+        SoundManager.instance.PlaySFX(Sounds.ButtonClick);
         if (panel == Panel.HUD)
         {
             UIManager.instance.Resume();

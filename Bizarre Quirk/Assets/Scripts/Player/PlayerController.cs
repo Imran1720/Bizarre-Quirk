@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
     public Rigidbody2D rb;
+    public Animator playerAnimator;
 
     [Header("Player Details")]
     public int health;
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
         PlayerInput();
         PlayerMovement();
         Jump();
+        SetAnimations();
         Flip();
     }
 
@@ -86,6 +88,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount > 0)
         {
             jumpCount--;
+            SoundManager.instance.PlaySFX(Sounds.Jump);
             rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
         }
     }
@@ -147,5 +150,24 @@ public class PlayerController : MonoBehaviour
         Transform target = GameManager.instance.checkPoint;
 
         transform.position = new Vector3(target.transform.position.x, target.transform.position.y, 0);
+    }
+
+    public void SetAnimations()
+    {
+        if (GroundCheck())
+        {
+            playerAnimator.SetBool("Grounded", true);
+            playerAnimator.SetFloat("yVelocity", 0);
+            playerAnimator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
+        }
+        else
+        {
+
+            playerAnimator.SetBool("Grounded", false);
+            playerAnimator.SetFloat("Speed", 0);
+        }
+        playerAnimator.SetFloat("yVelocity", rb.velocity.y);
+
+
     }
 }

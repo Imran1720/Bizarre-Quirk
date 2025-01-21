@@ -15,18 +15,21 @@ public class Menu : MonoBehaviour
 
     void OpenLevelScreen()
     {
+        SoundManager.instance.PlaySFX(Sounds.ButtonClick);
         homeScreen.SetActive(false);
         levelScreen.SetActive(true);
     }
 
     void OpenHomeScreen()
     {
+        SoundManager.instance.PlaySFX(Sounds.ButtonClick);
         homeScreen.SetActive(true);
         levelScreen.SetActive(false);
     }
 
     void Quit()
     {
+        SoundManager.instance.PlaySFX(Sounds.ButtonClick);
         Application.Quit();
     }
 }
