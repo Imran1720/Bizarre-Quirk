@@ -36,7 +36,7 @@ Collect all the keys open the door before the timer goes zero. Make use of rando
 ## How to Play:
 <ol>
     <ul>
-      <li>Use <b>A</b>,<b>D</b> to control the Character</li>
+      <li>Use <b>A</b>,<b>D</b> keys to control the Character</li>
          <li> Collect all the keys to open the gate</li></li>
          <li>Avoid Traps or Pits</li>
       <li>In Jumpstream  click <b>A</b> or <b>D</b> and <b>SPACEBAR</b> to change the direction</li>
