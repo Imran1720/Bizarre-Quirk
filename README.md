@@ -1,6 +1,14 @@
 # Bizarre-Quirk
 A chaotic dungeon adventure where strange power-ups grant unpredictable abilities, forcing you to adapt and survive in ever-changing, quirky ways!
 
+### Gameplay
+
+![image](https://github.com/Imran1720/Bizarre-Quirk/blob/2d8f0892a3b578423493a4df4a65a7be017b3d1a/Attachments/Bizarre%20Quirk.gif)
+
+### Screenshots
+
+![image](https://github.com/Imran1720/Bizarre-Quirk/blob/2d8f0892a3b578423493a4df4a65a7be017b3d1a/Attachments/Screenhots.png)
+
 ### Features
 <ol>
 <li><b>Movement:</b> The character moves in two directions (⬅️➡️).</li>
